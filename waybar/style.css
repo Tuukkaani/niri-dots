@@ -1,4 +1,4 @@
-@import "rose-pine-moon.css";
+@import "nord.css";
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
@@ -7,15 +7,15 @@
   font-weight: Bold;
   margin: 0;
   padding: 0;
-  min-width: 0px;
+  min-width: 16px;
 }
 
 window#waybar {
-  background-color: rgba(35, 33, 54, 0.99);
+  background-color: rgba(46, 52, 64, 0.99);
   border-bottom: none;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 0 8 0 8;
-  color: @text;
+  color: @nord6;
   transition-property: background-color;
   transition-duration: .5s;
 }
@@ -64,7 +64,7 @@ button:hover {
 #workspaces button {
   margin: 2 0 2 0;
   background-color: transparent;
-  color: @muted;
+  color: @nord3;
 }
 
 #workspaces button:hover {
@@ -73,12 +73,16 @@ button:hover {
 
 #workspaces button.focused,
 #workspaces button.active {
-  color: @rose;
+  color: @nord8;
   background-color: transparent;
 }
 
 #workspaces button.urgent {
   background-color: transparent;
+}
+
+#custom-sep {
+  color: rgba(67, 76, 94, 0.8);
 }
 
 #mode {
@@ -104,7 +108,7 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
   padding: 0 0px;
-  color: #ffffff;
+  color: @nord6;
 }
 
 #window,
@@ -126,35 +130,6 @@ button:hover {
   background-color: transparent;
   font-size: 18px;
   margin: 8 8 8 8;
-}
-
-#battery {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-#battery.charging,
-#battery.plugged {
-  color: #ffffff;
-  background-color: #26A65B;
-}
-
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
 #power-profiles-daemon {
@@ -180,33 +155,17 @@ label:focus {
   background-color: #000000;
 }
 
-#cpu {
-  background-color: #2ecc71;
-  color: #000000;
-}
-
-#memory {
-  background-color: #9b59b6;
-}
-
-#disk {
-  background-color: #964B00;
-}
-
-#backlight {
-  background-color: #90b1b1;
-}
-
 #network {
-  color: @pine;
-  font-size: 16px;
-  background-color: rgba(57, 53, 82, 0.5);
-  padding: 6 2 6 2;
-  margin: 8 8 2 8;
+  color: @nord9;
+  font-size: 20px;
+  background-color: transparent;
+  padding: 6 2 0 2;
+  margin: 2 8 2 8;
   border-radius: 8px;
 }
 
 #network.disconnected {
+  color: #434c5e;
   background-color: transparent;
 }
 
@@ -221,10 +180,10 @@ label:focus {
 }
 
 #wireplumber {
-  background-color: rgba(57, 53, 82, 0.5);
+  background-color: transparent;
   padding: 2 6 2 6;
   border-radius: 8px;
-  color: @text;
+  color: @nord6;
   font-size: 20px;
 }
 
@@ -237,7 +196,7 @@ label:focus {
 }
 
 #wireplumber.muted {
-  color: @love;
+  color: @nord11;
   background-color: transparent;
 }
 
@@ -264,7 +223,8 @@ label:focus {
 }
 
 #tray {
-  background-color: #2980b9;
+  background-color: transparent;
+  padding: 4 0 4 0
 }
 
 #tray>.passive {

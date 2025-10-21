@@ -1,12 +1,12 @@
 // -*- mode: jsonc -*-
 {
-  // "layer": "top", // Waybar at top layer
+  "layer": "top", // Waybar at top layer
   "position": "left", // Waybar position (top|bottom|left|right)
   "width": 30, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   "margin-left": 8,
-  "margin-top": 16,
-  "margin-bottom": 16,
+  "margin-top": 8,
+  "margin-bottom": 8,
   // Choose the order of the modules
   "modules-left": [
     "clock"
@@ -16,6 +16,7 @@
   ],
   "modules-right": [
     "tray",
+    "custom/sep",
     "network",
     "wireplumber#sink",
     "wireplumber#source"
@@ -48,26 +49,28 @@
   "network": {
     "interface": "enp14s0",
     "format": "",
-    "format-ethernet": "",
+    "format-ethernet": "󰈀",
     "max-length": 50
   },
   "wireplumber#sink": {
     "format": "{icon}",
-    "format-muted": "",
+    "format-muted": "",
     "format-icons": [
-      "",
       "",
-      ""
     ],
-    "on-click": "kitty ncpamixer",
+    "on-click": "foot ncpamixer",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
   },
   "wireplumber#source": {
     "node-type": "Audio/Source",
     "format": "",
-    "format-muted": "",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     "scroll-step": 5
-  }
+  },
+  "custom/sep": {
+	"rotate": 90,
+        "format" : "|",
+        "interval" : 0
+    }
 }

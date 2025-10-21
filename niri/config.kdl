@@ -17,15 +17,16 @@ input {
 }
 
 cursor {
-    xcursor-theme "BreezeX-RoséPine"
+    xcursor-theme "Nordzy-cursors"
+    xcursor-size 24
     hide-when-typing
 }
 
 output "DP-2" {
-    mode "2560x1440@164.958"
+    mode "2560x1440@119.998"
     scale 1.0
     position x=0 y=0
-    variable-refresh-rate on-demand=true
+    variable-refresh-rate
 }
 
 output "HDMI-A-1" {
@@ -36,7 +37,7 @@ output "HDMI-A-1" {
 
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 8
 
     center-focused-column "never"
 
@@ -52,9 +53,9 @@ layout {
         width 2
 
 
-        active-color "#ea9a97"
-        inactive-color "#6e6a86"
-        urgent-color "#eb6f92"
+        active-color "#88C0D0"
+        inactive-color "#4C566A"
+        urgent-color "#EBCB8B"
 
     }
 
@@ -70,17 +71,17 @@ layout {
     }
 
     shadow {
-        on
-        softness 30
+	on
+        softness 15
 
         // Spread expands the shadow.
-        spread 5
+        spread 4
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5
+        offset x=0 y=0
 
         // You can also change the shadow color and opacity.
-        color "#232136"
+        color "#2E3440"
     }
 
     struts {
@@ -93,8 +94,10 @@ layout {
 
 // Startup
 spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -i /home/turre/Walls/wall1.jpg &"
-spawn-sh-at-startup "kitty --hold fastfetch"
+spawn-at-startup "fnott"
+spawn-sh-at-startup "easyeffects --gapplication-service &"
+spawn-sh-at-startup "swaybg -i /home/turre/walls/1.png &"
+spawn-sh-at-startup "foot --hold fastfetch"
 
 hotkey-overlay {
     skip-at-startup
@@ -115,16 +118,16 @@ window-rule {
 
 // Draw real proper corners frfr
 window-rule {
-    geometry-corner-radius 16
+    geometry-corner-radius 4
     clip-to-geometry true
 }
 
 binds {
     // Binds/Programs
-    Mod+Q { spawn "kitty"; }
-    Mod+D { spawn "firefox"; }
+    Mod+Q { spawn "foot"; }
+    Mod+D { spawn "librewolf"; }
     Mod+R { spawn "fuzzel"; }
-    Mod+E { spawn-sh "kitty yazi"; }
+    Mod+E { spawn-sh "foot yazi"; }
     
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
@@ -140,6 +143,7 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     // Binds/Misc
+    MouseForward { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     Mod+O repeat=false { toggle-overview; }
     Mod+C repeat=false { close-window; }
     Mod+Shift+S { screenshot; }
